@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.sa90.materialarcmenu.ArcMenu;
+
 public class MainActivity extends AppCompatActivity {
     private Count count;
 
@@ -20,12 +22,44 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         count = new Count((TextView) findViewById(R.id.KCount), getPreferences(Context.MODE_PRIVATE));
+        final ArcMenu fabBtn = (ArcMenu) findViewById(R.id.arcMenu);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count.add();
+                fabBtn.toggleMenu();
+                Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count.add();
+                fabBtn.toggleMenu();
+                Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count.add();
+                fabBtn.toggleMenu();
+                Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+        FloatingActionButton fab4 = (FloatingActionButton) findViewById(R.id.fab4);
+        fab4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count.add();
+                fabBtn.toggleMenu();
                 Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
