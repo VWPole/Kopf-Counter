@@ -20,7 +20,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-
+    //TODO : change icons
     <com.sa90.materialarcmenu.ArcMenu
         android:id="@+id/arcMenu"
         android:layout_width="wrap_content"

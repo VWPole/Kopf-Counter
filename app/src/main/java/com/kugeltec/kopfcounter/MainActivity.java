@@ -14,6 +14,7 @@ import com.sa90.materialarcmenu.ArcMenu;
 
 public class MainActivity extends AppCompatActivity {
     private Count count;
+    private ArcMenu fabBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,15 +22,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        count = new Count((TextView) findViewById(R.id.KCount), getPreferences(Context.MODE_PRIVATE));
-        final ArcMenu fabBtn = (ArcMenu) findViewById(R.id.arcMenu);
-
+        count = new Count((TextView) findViewById(R.id.KCount), getPreferences(Context.MODE_PRIVATE), getApplicationContext());
+        fabBtn = (ArcMenu) findViewById(R.id.arcMenu);
+        //todo change icons fab
+        //todo on menu open screen darker
+        //todo fab 1x click
         FloatingActionButton fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count.add();
-                fabBtn.toggleMenu();
+                doFabStuff(Enum.Places.OTHER);
                 Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -38,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         fab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count.add();
-                fabBtn.toggleMenu();
+                doFabStuff(Enum.Places.HOME);
                 Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         fab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count.add();
-                fabBtn.toggleMenu();
+                doFabStuff(Enum.Places.FRIENDS);
                 Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         fab4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                count.add();
-                fabBtn.toggleMenu();
+                doFabStuff(Enum.Places.BAR);
                 Snackbar.make(view, "Kopf added", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -80,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void doFabStuff(Enum.Places place) {
+        count.add(place);
+        fabBtn.toggleMenu();
     }
 
 }
